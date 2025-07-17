@@ -91,6 +91,10 @@ const SidenavMenu = () => {
 												<IconFileReport size={16} className='me-2' />
 												Reports
 											</Link>
+											<Link to='/Forms'>
+												<IconFileReport size={16} className='me-2' />
+												Forms
+											</Link>
 										</li>
 									</ul>
 								</li>
