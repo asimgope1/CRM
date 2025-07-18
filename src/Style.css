@@ -15357,7 +15357,7 @@ fieldset:disabled .btn {
     z-index: 1000;
     background: var(--crms-topbar-bg);
     min-height: var(--crms-topbar-height);
-    margin-left: var(--crms-sidenav-width);
+    margin-left: 0;
     transition: all 0.25s ease-in-out;
     border-bottom: 1px solid var(--crms-border-color);
     padding: 0 1.25rem;
@@ -16518,18 +16518,14 @@ html[data-bs-theme=dark] #light-dark-mode .ti-moon::before {
 }
 
 .page-wrapper {
-    -webkit-transition: all 0.5s ease;
-    -ms-transition: all 0.5s ease;
-    transition: all 0.5s ease;
-    margin: 0 0 0 var(--crms-sidenav-width);
+    transition: all 0.2s ease;
     display: flex;
     flex-direction: column;
     position: relative;
     left: 0;
     min-height: calc(100vh - (var(--cf-topbar-height) + 1px));
-    -webkit-transition: all 0.2s ease;
-    -ms-transition: all 0.2s ease;
-    transition: all 0.2s ease;
+    /* Remove this line below to prevent content from shifting */
+    /* margin: 0 0 0 var(--crms-sidenav-width); */
 }
 
 @media (max-width: 991.98px) {
@@ -16542,6 +16538,7 @@ html[data-bs-theme=dark] #light-dark-mode .ti-moon::before {
     padding: 1.25rem;
     min-height: calc(100vh - 96px);
 }
+
 
 .footer {
     margin-top: auto;
@@ -28259,3 +28256,253 @@ th.fc-day-header {
 #calendar-appointment .fc-event {
     background: transparent !important;
 }
+.layout-container {
+	display: flex;
+	height: 100vh;
+	overflow: hidden;
+}
+
+.layout-main {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.layout-topbar {
+	transition: margin-left 0.3s ease;
+}
+
+.layout-content {
+	flex: 1;
+	overflow-y: auto;
+	transition: margin-left 0.3s ease;
+}
+
+.page-wrapper {
+	min-height: 100%;
+	padding-bottom: 60px;
+}
+.sidenav-menu {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	background-color: #1e1e2f;
+	color: white;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	transition: width 0.3s ease;
+	z-index: 1040;
+}
+
+.sidenav-menu.collapsed {
+	width: 60px;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+}
+
+.sidenav-menu.expanded {
+	width: 240px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+
+.sidenav-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+
+.sidenav-logo {
+	background-color: #444;
+	border-radius: 50%;
+	height: 40px;
+	transition: all 0.3s ease;
+}
+
+.sidenav-logo.collapsed {
+	width: 40px;
+}
+
+.sidenav-logo.expanded {
+	width: 120px;
+	border-radius: 8px;
+	padding-left: 1rem;
+	padding-right: 1rem;
+}
+.sidenav-menu .nav .nav-item .nav-link {
+	padding: 8px 16px;
+	font-size: 15px;
+}
+
+.sidenav-menu .nav .nav-item ul.nav {
+	padding-left: 12px;
+}
+
+.sidenav-menu .nav .nav-item ul.nav .nav-link {
+	font-size: 14px;
+	padding: 6px 16px;
+	opacity: 0.85;
+}
+.submenu-list {
+	list-style-type: disc;
+	padding-left: 1.5rem;
+}
+
+.submenu-container {
+	max-height: 0;
+	overflow: hidden;
+	opacity: 0;
+	transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.submenu-container.open {
+	max-height: 200px; /* Adjust if submenu gets longer */
+	opacity: 1;
+}
+
+.pin-icon {
+	transition: transform 0.2s ease;
+}
+
+.pin-icon.rotated {
+	transform: rotate(45deg);
+}
+
+.nav-label {
+	margin-left: 0.75rem;
+	transition: opacity 0.3s ease;
+	white-space: nowrap;
+}
+
+.nav-label.hidden {
+	opacity: 0;
+	visibility: hidden;
+	width: 0;
+	overflow: hidden;
+}
+
+.nav-label.visible {
+	opacity: 1;
+	visibility: visible;
+}
+.logo-lg-box {
+	width: 120px;
+	height: 40px;
+	background-color: #ccc;
+	border-radius: 4px;
+}
+
+.logo-sm-circle {
+	width: 40px;
+	height: 40px;
+	background-color: #ccc;
+	border-radius: 50%;
+}
+
+.profile-avatar {
+	width: 38px;
+	height: 38px;
+	border-radius: 4px;
+	background-color: #ccc;
+}
+
+.online-indicator {
+	background-color: white;
+	border-radius: 50%;
+}
+
+.dropdown-avatar {
+	width: 42px;
+	height: 42px;
+	background-color: #999;
+	border-radius: 50%;
+}
+/* ModalStyles.css */
+
+.modal-backdrop-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+.modal-custom {
+  z-index: 1050;
+}
+
+.avatar-large {
+  width: 120px;
+  height: 120px;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-action-buttons .btn {
+  min-width: 110px;
+}
+/* Optional - for cleaner spacing */
+.modal-content {
+  border-radius: 0.75rem;
+}
+
+.avatar.bg-danger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Date range dropdown */
+.date-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.5rem;
+  z-index: 1000;
+  min-width: 220px;
+}
+
+/* Custom modal backdrop */
+.modal-backdrop-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1040;
+}
+
+/* Avatar Circle */
+.avatar-rectangle {
+  width: 40px;
+  height: 42px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px; /* Optional: slightly rounded corners */
+  background-color: #e3f2fd;
+  color: #2196f3;
+}
+.avatar-circle {
+  width: 120px;
+  height: 120px;
+  font-size: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: #e3f2fd;
+  color: #2196f3;
+}
+
+
+

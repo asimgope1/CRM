@@ -20,56 +20,44 @@ import {
 	IconLogout,
 } from "@tabler/icons-react";
 
+
 const Topbar = () => {
 	return (
-		<header className='navbar-header'>
-			<div className='page-container topbar-menu d-flex justify-content-between align-items-center'>
+		<header className="navbar-header">
+			<div className="page-container topbar-menu d-flex justify-content-between align-items-center">
 				{/* Left: Logo and Search */}
-				<div className='d-flex align-items-center gap-2'>
-					<Link to='/' className='logo d-flex align-items-center gap-1'>
-						<span className='logo-light'>
-							<span className='logo-lg'>
-								<div
-									style={{
-										width: "120px",
-										height: "40px",
-										backgroundColor: "#ccc",
-										borderRadius: "4px",
-									}}
-								/>
+				<div className="d-flex align-items-center gap-2">
+					<Link to="/" className="logo d-flex align-items-center gap-1">
+						<span className="logo-light">
+							<span className="logo-lg">
+								<div className="logo-lg-box" />
 							</span>
-							<span className='logo-sm d-lg-none'>
-								<div
-									style={{
-										width: "40px",
-										height: "40px",
-										backgroundColor: "#ccc",
-										borderRadius: "50%",
-									}}
-								/>
+							<span className="logo-sm d-lg-none">
+								<div className="logo-sm-circle" />
 							</span>
 						</span>
 					</Link>
 
-					<button type='button' id='mobile_btn' className='mobile-btn'>
+					<button type="button" id="mobile_btn" className="mobile-btn">
 						<IconMenu2 size={24} />
 					</button>
 
 					<button
-						type='button'
-						className='sidenav-toggle-btn btn border-0 p-0'
-						id='toggle_btn2'>
+						type="button"
+						className="sidenav-toggle-btn btn border-0 p-0"
+						id="toggle_btn2"
+					>
 						<IconArrowBarToRight />
 					</button>
 
-					<div className='me-auto d-flex align-items-center header-search d-none d-lg-flex'>
-						<div className='input-icon position-relative me-2'>
+					<div className="me-auto d-flex align-items-center header-search d-none d-lg-flex">
+						<div className="input-icon position-relative me-2">
 							<input
-								type='text'
-								className='form-control'
-								placeholder='Search Keyword'
+								type="text"
+								className="form-control"
+								placeholder="Search Keyword"
 							/>
-							<span className='input-icon-addon d-inline-flex p-0 header-search-icon'>
+							<span className="input-icon-addon d-inline-flex p-0 header-search-icon">
 								<IconCommand size={18} />
 							</span>
 						</div>
@@ -77,151 +65,140 @@ const Topbar = () => {
 				</div>
 
 				{/* Right: Icons and Profile */}
-				<div className='d-flex align-items-center'>
-					<div className='header-item d-flex d-lg-none me-2'>
-						<button className='topbar-link btn' type='button'>
+				<div className="d-flex align-items-center">
+					<div className="header-item d-flex d-lg-none me-2">
+						<button className="topbar-link btn" type="button">
 							<IconSearch size={16} />
 						</button>
 					</div>
 
-					<div className='header-item'>
-						<div className='dropdown me-2'>
-							<a href='#' className='btn topbar-link btnFullscreen'>
+					<div className="header-item">
+						<div className="dropdown me-2">
+							<a href="#" className="btn topbar-link btnFullscreen">
 								<IconMaximize />
 							</a>
 						</div>
 					</div>
 
-					<div className='header-item d-none d-sm-flex me-2'>
+					<div className="header-item d-none d-sm-flex me-2">
 						<button
-							className='topbar-link btn topbar-link'
-							id='light-dark-mode'
-							type='button'>
+							className="topbar-link btn topbar-link"
+							id="light-dark-mode"
+							type="button"
+						>
 							<IconMoon size={16} />
 						</button>
 					</div>
 
-					<div className='header-item d-none d-sm-flex'>
-						<div className='dropdown me-2'>
+					<div className="header-item d-none d-sm-flex">
+						<div className="dropdown me-2">
 							<a
-								href='#'
-								className='btn topbar-link topbar-teal-link'
-								data-bs-toggle='dropdown'>
+								href="#"
+								className="btn topbar-link topbar-teal-link"
+								data-bs-toggle="dropdown"
+							>
 								<IconLayoutGridAdd />
 							</a>
 						</div>
 					</div>
 
-					<div className='header-item d-none d-sm-flex'>
-						<div className='dropdown me-2'>
-							<a href='faq.html' className='btn topbar-link topbar-indigo-link'>
+					<div className="header-item d-none d-sm-flex">
+						<div className="dropdown me-2">
+							<a href="faq.html" className="btn topbar-link topbar-indigo-link">
 								<IconHelpHexagon />
 							</a>
 						</div>
 					</div>
 
-					<div className='header-item d-none d-sm-flex'>
-						<div className='dropdown me-2'>
+					<div className="header-item d-none d-sm-flex">
+						<div className="dropdown me-2">
 							<a
-								href='lead-reports.html'
-								className='btn topbar-link topbar-warning-link'>
+								href="lead-reports.html"
+								className="btn topbar-link topbar-warning-link"
+							>
 								<IconChartPie />
 							</a>
 						</div>
 					</div>
 
-					<div className='header-line'></div>
+					<div className="header-line" />
 
-					<div className='header-item'>
-						<div className='dropdown me-2'>
-							<a href='chat.html' className='btn topbar-link'>
+					<div className="header-item">
+						<div className="dropdown me-2">
+							<a href="chat.html" className="btn topbar-link">
 								<IconMessageCircleExclamation />
-								<span className='badge rounded-pill'>14</span>
+								<span className="badge rounded-pill">14</span>
 							</a>
 						</div>
 					</div>
 
-					<div className='header-item'>
-						<div className='dropdown me-2'>
+					<div className="header-item">
+						<div className="dropdown me-2">
 							<button
-								type='button'
-								className='topbar-link btn dropdown-toggle drop-arrow-none'
-								data-bs-toggle='dropdown'>
+								type="button"
+								className="topbar-link btn dropdown-toggle drop-arrow-none"
+								data-bs-toggle="dropdown"
+							>
 								<IconBellCheck size={16} />
-								<span className='badge rounded-pill'>10</span>
+								<span className="badge rounded-pill">10</span>
 							</button>
 						</div>
 					</div>
 
-					<div className='dropdown profile-dropdown d-flex align-items-center justify-content-center'>
+					<div className="dropdown profile-dropdown d-flex align-items-center justify-content-center">
 						<Link
-							to='#'
-							className='topbar-link dropdown-toggle drop-arrow-none position-relative'
-							data-bs-toggle='dropdown'>
-							<div
-								style={{
-									width: "38px",
-									height: "38px",
-									borderRadius: "4px",
-									backgroundColor: "#ccc",
-								}}
-							/>
-							<span className='online text-success'>
-								<IconCircleFilled
-									size={8}
-									style={{ backgroundColor: "white", borderRadius: "50%" }}
-								/>
+							to="#"
+							className="topbar-link dropdown-toggle drop-arrow-none position-relative"
+							data-bs-toggle="dropdown"
+						>
+							<div className="profile-avatar" />
+							<span className="online text-success">
+								<IconCircleFilled className="online-indicator" size={8} />
 							</span>
 						</Link>
-						<div className='dropdown-menu dropdown-menu-end dropdown-menu-md p-2'>
-							<div className='d-flex align-items-center bg-light rounded-3 p-2 mb-2'>
-								<div
-									className='rounded-circle'
-									style={{
-										width: "42px",
-										height: "42px",
-										backgroundColor: "#999",
-									}}
-								/>
-								<div className='ms-2'>
-									<p className='mb-0 fw-medium text-dark'>Katherine Brooks</p>
-									<span className='d-block fs-13'>Installer</span>
+
+						<div className="dropdown-menu dropdown-menu-end dropdown-menu-md p-2">
+							<div className="d-flex align-items-center bg-light rounded-3 p-2 mb-2">
+								<div className="dropdown-avatar" />
+								<div className="ms-2">
+									<p className="mb-0 fw-medium text-dark">Katherine Brooks</p>
+									<span className="d-block fs-13">Installer</span>
 								</div>
 							</div>
 
-							<a href='profile-settings.html' className='dropdown-item'>
-								<IconUserCircle className='me-1 align-middle' />
-								<span className='align-middle'>Profile Settings</span>
+							<a href="profile-settings.html" className="dropdown-item">
+								<IconUserCircle className="me-1 align-middle" />
+								<span className="align-middle">Profile Settings</span>
 							</a>
 
-							<div className='form-check form-switch form-check-reverse d-flex align-items-center justify-content-between dropdown-item mb-0'>
-								<label className='form-check-label' htmlFor='notify'>
-									<IconBell className='me-1' />
+							<div className="form-check form-switch form-check-reverse d-flex align-items-center justify-content-between dropdown-item mb-0">
+								<label className="form-check-label" htmlFor="notify">
+									<IconBell className="me-1" />
 									Notifications
 								</label>
 								<input
-									className='form-check-input me-0'
-									type='checkbox'
-									role='switch'
-									id='notify'
+									className="form-check-input me-0"
+									type="checkbox"
+									role="switch"
+									id="notify"
 								/>
 							</div>
 
-							<a href='#' className='dropdown-item'>
-								<IconHelpCircle className='me-1 align-middle' />
-								<span className='align-middle'>Help & Support</span>
+							<a href="#" className="dropdown-item">
+								<IconHelpCircle className="me-1 align-middle" />
+								<span className="align-middle">Help & Support</span>
 							</a>
 
-							<a href='profile-settings.html' className='dropdown-item'>
-								<IconSettings className='me-1 align-middle' />
-								<span className='align-middle'>Settings</span>
+							<a href="profile-settings.html" className="dropdown-item">
+								<IconSettings className="me-1 align-middle" />
+								<span className="align-middle">Settings</span>
 							</a>
 
-							<div className='pt-2 mt-2 border-top'>
-								<a href='login.html' className='dropdown-item text-danger'>
-									<IconLogout className='me-1 fs-17 align-middle' />
-									<span className='align-middle'>Sign Out</span>
-								</a>
+							<div className="pt-2 mt-2 border-top">
+								<Link to="/"  className="dropdown-item text-danger">
+									<IconLogout className="me-1 fs-17 align-middle" />
+									<span className="align-middle">Sign Out</span>
+								</Link>
 							</div>
 						</div>
 					</div>

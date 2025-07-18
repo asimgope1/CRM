@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function Forms() {
   return (
-    <Layout title="Complain" showHeader={false}>
+    <Layout title="Forms" showHeader={false}>
       <div className="container mt-4">
         {/* Header */}
         <div className="d-flex align-items-center justify-content-between gap-2 mb-4 flex-wrap">
