@@ -37,7 +37,7 @@ function Complain() {
 									<Link to='/'>Home</Link>
 								</li>
 								<li className='breadcrumb-item active' aria-current='page'>
-									Complaints
+									Complaint List
 								</li>
 							</ol>
 						</nav>

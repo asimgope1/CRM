@@ -1,110 +1,112 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import {
 	IconLayoutDashboard,
-	IconArrowBarToLeft,
-	IconX,
-	IconMenu2,
 	IconAlertTriangle,
 	IconFileReport,
+	IconPin,
+	IconChevronDown,
+	IconChevronRight,
 } from "@tabler/icons-react";
 
-const SidenavMenu = () => {
+const SidenavMenu = ({ pinned, setPinned, isExpanded, setHovered }) => {
+	const [complainOpen, setComplainOpen] = useState(false);
+
+	useEffect(() => {
+		if (pinned) {
+			document.body.classList.add("sidebar-pinned");
+		} else {
+			document.body.classList.remove("sidebar-pinned");
+		}
+	}, [pinned]);
+
 	return (
-		<div className='sidebar' id='sidebar'>
-			{/* Logo Section */}
-			<div className='sidebar-logo'>
-				<div>
-					<Link to='/' className='logo logo-normal'>
-						<div
-							style={{
-								width: "120px",
-								height: "40px",
-								backgroundColor: "#ccc",
-								borderRadius: "4px",
-							}}
-						/>
-					</Link>
-
-					<Link to='/' className='logo-small'>
-						<div
-							style={{
-								width: "40px",
-								height: "40px",
-								backgroundColor: "#ccc",
-								borderRadius: "50%",
-							}}
-						/>
-					</Link>
-
-					<Link to='/' className='dark-logo'>
-						<div
-							style={{
-								width: "120px",
-								height: "40px",
-								backgroundColor: "#999",
-								borderRadius: "4px",
-							}}
-						/>
-					</Link>
-				</div>
-
-				<button
-					className='sidenav-toggle-btn btn border-0 p-0 active'
-					id='toggle_btn'>
-					<IconArrowBarToLeft size={20} />
-				</button>
-				<button className='sidebar-close'>
-					<IconX size={20} className='align-middle' />
-				</button>
+		<div
+			className={`sidenav-menu ${isExpanded ? "expanded" : "collapsed"}`}
+			onMouseEnter={() => !pinned && setHovered(true)}
+			onMouseLeave={() => !pinned && setHovered(false)}
+		>
+			{/* Logo and Pin Button */}
+			<div className="sidenav-header">
+				<div className={`sidenav-logo ${isExpanded ? "expanded" : "collapsed"}`} />
+				{isExpanded && (
+					<button
+						className="btn btn-sm btn-outline-light ms-2 pin-button"
+						onClick={() => setPinned(!pinned)}
+						title={pinned ? "Unpin" : "Pin"}
+					>
+						<IconPin size={18} className={`pin-icon ${pinned ? "rotated" : ""}`} />
+					</button>
+				)}
 			</div>
 
-			{/* Sidebar Menu */}
-			<div className='sidebar-inner' data-simplebar>
-				<div id='sidebar-menu' className='sidebar-menu'>
-					<ul>
-						<li className='menu-title'>
-							<span>Main Menu</span>
-						</li>
-						<li>
-							<ul>
-								<li className='submenu'>
-									<Link to='#' className='active subdrop'>
-										<IconLayoutDashboard size={18} className='me-2' />
-										<span>Dashboard</span>
-										<span className='menu-arrow'></span>
+			{/* Navigation Links */}
+			<ul className="nav flex-column mt-3 w-100">
+				<li className="nav-item">
+					<Link to="/dashboard" className="nav-link text-white d-flex align-items-center">
+						<IconLayoutDashboard size={20} />
+						<span className={`nav-label ${isExpanded ? "visible" : "hidden"}`}>Dashboard</span>
+					</Link>
+				</li>
+
+				{/* Complains with Submenu */}
+				<li className="nav-item">
+					<div
+						className="nav-link text-white d-flex align-items-center justify-content-between"
+						onClick={() => setComplainOpen(!complainOpen)}
+						style={{ cursor: "pointer" }}
+					>
+						<div className="d-flex align-items-center">
+							<IconAlertTriangle size={20} />
+							<span className={`nav-label ${isExpanded ? "visible" : "hidden"}`}>Complains</span>
+						</div>
+						{isExpanded &&
+							(complainOpen ? <IconChevronDown size={16} /> : <IconChevronRight size={16} />)}
+					</div>
+					{isExpanded && (
+						<div className={`submenu-container ${complainOpen ? "open" : ""}`}>
+							<ul
+								className="nav flex-column ms-4 mt-1"
+								style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}
+							>
+								<li className="nav-item">
+									<Link to="/Complain" className="nav-link text-white">
+										Complain List
 									</Link>
-									<ul>
-										<li>
-											<Link to='/' className='active'>
-												Dashboard
-											</Link>
-										</li>
-										<li>
-											<Link to='/Complain'>
-												<IconAlertTriangle size={16} className='me-2' />
-												Complains
-											</Link>
-										</li>
-										<li>
-											<Link to='/Report'>
-												<IconFileReport size={16} className='me-2' />
-												Reports
-											</Link>
-											<Link to='/Forms'>
-												<IconFileReport size={16} className='me-2' />
-												Forms
-											</Link>
-										</li>
-									</ul>
 								</li>
-
-								{/* Additional menu items can be added similarly */}
+								<li className="nav-item">
+									<Link to="/CallHistory" className="nav-link text-white">
+										Call History
+									</Link>
+								</li>
+								<li className="nav-item">
+									<Link to="/ChatPage" className="nav-link text-white">
+										Chat page
+									</Link>
+								</li>
 							</ul>
-						</li>
-					</ul>
-				</div>
-			</div>
+						</div>
+					)}
+
+
+
+
+				</li>
+
+				<li className="nav-item">
+					<Link to="/Report" className="nav-link text-white d-flex align-items-center">
+						<IconFileReport size={20} />
+						<span className={`nav-label ${isExpanded ? "visible" : "hidden"}`}>Reports</span>
+					</Link>
+				</li>
+
+				<li className="nav-item">
+					<Link to="/Forms" className="nav-link text-white d-flex align-items-center">
+						<IconFileReport size={20} />
+						<span className={`nav-label ${isExpanded ? "visible" : "hidden"}`}>Forms</span>
+					</Link>
+				</li>
+			</ul>
 		</div>
 	);
 };
