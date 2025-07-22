@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	IconUserPlus,
 	IconMapPinCog,
@@ -8,14 +8,35 @@ import {
 	IconFileBroken,
 	IconStar,
 	IconX,
+    IconHash,
+    IconCalendarTime,
+    IconPhone,
 } from "@tabler/icons-react";
+import ConfirmSubmitModal from "./ConfirmSubmitModal";
 
 const AddComplaintModal = () => {
+	const complaintId = "CMP-" + Math.floor(100000 + Math.random() * 900000);
+	const ticketNo = "TKT-" + Date.now();
+	const now = new Date().toISOString().slice(0, 16); // yyyy-mm-ddThh:mm
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+
+const handleSubmit = () => {
+  // Perform your final submission logic here
+  console.log("Complaint submitted!");
+  setShowConfirmModal(false); // close the modal after submission
+};
+
 	return (
 		<div
 			className='offcanvas offcanvas-end offcanvas-large'
 			tabIndex='-1'
 			id='add_complaint'>
+			<ConfirmSubmitModal
+				show={showConfirmModal}
+				onClose={() => setShowConfirmModal(false)}
+				onConfirm={handleSubmit}
+			/>
+
 			<div className='offcanvas-header border-bottom'>
 				<h5 className='mb-0'>Add New Complaint</h5>
 				<button
@@ -51,114 +72,160 @@ const AddComplaintModal = () => {
 								data-bs-parent='#complaint_accordion'>
 								<div className='accordion-body border-top'>
 									<div className='row'>
-										<div className='col-md-12'>
-											<div className='mb-3'>
-												<label className='form-label'>
-													Complaint Subject
-													<span className='text-danger'>*</span>
-												</label>
-												<input type='text' className='form-control' />
-											</div>
-										</div>
+										{/* Complaint ID (readonly) */}
 										<div className='col-md-6'>
 											<div className='mb-3'>
-												<label className='form-label'>
-													Company<span className='text-danger'>*</span>
-												</label>
-												<select className='form-select'>
-													<option>Select Company</option>
-													<option>NovaWave LLC</option>
-													<option>TechSolutions Inc</option>
-													<option>Global Enterprises</option>
-												</select>
-											</div>
-										</div>
-										<div className='col-md-6'>
-											<div className='mb-3'>
-												<label className='form-label'>
-													Contact Person<span className='text-danger'>*</span>
-												</label>
-												<select className='form-select'>
-													<option>Select Contact</option>
-													<option>John Doe</option>
-													<option>Jane Smith</option>
-													<option>Robert Johnson</option>
-												</select>
-											</div>
-										</div>
-										<div className='col-md-6'>
-											<div className='mb-3'>
-												<label className='form-label'>
-													Priority<span className='text-danger'>*</span>
-												</label>
-												<select className='form-select'>
-													<option>Select Priority</option>
-													<option>Low</option>
-													<option>Medium</option>
-													<option>High</option>
-													<option>Critical</option>
-												</select>
-											</div>
-										</div>
-										<div className='col-md-6'>
-											<div className='mb-3'>
-												<label className='form-label'>
-													Status<span className='text-danger'>*</span>
-												</label>
-												<select className='form-select'>
-													<option>Select Status</option>
-													<option>Open</option>
-													<option>In Progress</option>
-													<option>Resolved</option>
-													<option>Closed</option>
-												</select>
-											</div>
-										</div>
-										<div className='col-md-6'>
-											<div className='mb-3'>
-												<label className='form-label'>
-													Complaint Date<span className='text-danger'>*</span>
-												</label>
-												<input type='date' className='form-control' />
-											</div>
-										</div>
-										<div className='col-md-6'>
-											<div className='mb-3'>
-												<label className='form-label'>
-													Due Date<span className='text-danger'>*</span>
-												</label>
-												<input type='date' className='form-control' />
-											</div>
-										</div>
-										<div className='col-md-12'>
-											<div className='mb-3'>
-												<label className='form-label'>
-													Description<span className='text-danger'>*</span>
-												</label>
-												<textarea className='form-control' rows='4'></textarea>
-											</div>
-										</div>
-										<div className='col-md-12'>
-											<div className='d-flex align-items-center mb-3'>
-												<div className='avatar avatar-xxl border border-dashed me-3 flex-shrink-0'>
-													<div className='position-relative d-flex align-items-center'>
-														<IconPhoto className='text-dark fs-16' />
-													</div>
-												</div>
-												<div className='d-inline-flex flex-column align-items-start'>
-													<div className='drag-upload-btn btn btn-sm btn-primary position-relative mb-2'>
-														<IconFileBroken className='me-1' size={16} />
-														Upload file
-														<input
-															type='file'
-															className='form-control image-sign'
-															multiple=''
-														/>
-													</div>
-													<span>JPG, GIF or PNG. Max size of 800K</span>
+												<label className='form-label'>Complaint ID</label>
+												<div className='input-group'>
+													<span className='input-group-text'>
+														<IconHash size={16} />
+													</span>
+													<input
+														type='text'
+														className='form-control'
+														value={complaintId}
+														readOnly
+													/>
 												</div>
 											</div>
 										</div>
+
+									
+									
+
+										{/* Complaint Date/Time */}
+										<div className='col-md-6'>
+											<div className='mb-3'>
+												<label className='form-label'>
+													Complaint Date & Time
+												</label>
+												<div className='input-group'>
+													<span className='input-group-text'>
+														<IconCalendarTime size={16} />
+													</span>
+													<input
+														type='datetime-local'
+														className='form-control'
+														value={now}
+														readOnly
+													/>
+												</div>
+											</div>
+										</div>
+
+										{/* Phone Number */}
+										<div className='col-md-6'>
+											<div className='mb-3'>
+												<label className='form-label'>
+													Phone Number<span className='text-danger'>*</span>
+												</label>
+												<div className='input-group'>
+													<span className='input-group-text'>
+														<IconPhone size={16} />
+													</span>
+													<input
+														type='text'
+														className='form-control'
+														placeholder='Enter phone number'
+													/>
+												</div>
+											</div>
+										</div>
+
+										{/* Customer Name */}
+										<div className='col-md-6'>
+											<div className='mb-3'>
+												<label className='form-label'>
+													Customer Name<span className='text-danger'>*</span>
+												</label>
+												<input
+													type='text'
+													className='form-control'
+													placeholder='Enter customer name'
+												/>
+											</div>
+										</div>
+
+										{/* State */}
+										<div className='col-md-3'>
+											<div className='mb-3'>
+												<label className='form-label'>State</label>
+												<input
+													type='text'
+													className='form-control'
+													placeholder='State'
+												/>
+											</div>
+										</div>
+
+										{/* City */}
+										<div className='col-md-3'>
+											<div className='mb-3'>
+												<label className='form-label'>City</label>
+												<input
+													type='text'
+													className='form-control'
+													placeholder='City'
+												/>
+											</div>
+										</div>
+
+										{/* Address */}
+										<div className='col-md-12'>
+											<div className='mb-3'>
+												<label className='form-label'>Address</label>
+												<textarea
+													className='form-control'
+													rows='2'
+													placeholder='Enter address'
+												/>
+											</div>
+										</div>
+
+										{/* Department */}
+										<div className='col-md-6'>
+											<div className='mb-3'>
+												<label className='form-label'>
+													Department<span className='text-danger'>*</span>
+												</label>
+												<select className='form-select'>
+													<option>Support</option>
+													<option>Sales</option>
+													<option>Technical</option>
+													<option>Billing</option>
+												</select>
+											</div>
+										</div>
+
+										{/* Complaint Type */}
+										<div className='col-md-6'>
+											<div className='mb-3'>
+												<label className='form-label'>
+													Complaint Type<span className='text-danger'>*</span>
+												</label>
+												<select className='form-select'>
+													<option>Service Issue</option>
+													<option>Product Defect</option>
+													<option>Delay in Delivery</option>
+													<option>Miscommunication</option>
+													<option>Other</option>
+												</select>
+											</div>
+										</div>
+
+										{/* Additional Notes */}
+										<div className='col-md-12'>
+											<div className='mb-3'>
+												<label className='form-label'>Other Notes</label>
+												<textarea
+													className='form-control'
+													rows='3'
+													placeholder='Any additional information'></textarea>
+											</div>
+										</div>
+
+
+										{/* Upload Section (unchanged) */}
 									</div>
 								</div>
 							</div>
@@ -183,7 +250,7 @@ const AddComplaintModal = () => {
 								id='additional_details'
 								data-bs-parent='#complaint_accordion'>
 								<div className='accordion-body border-top'>
-									<div className='row'>
+									{/* <div className='row'>
 										<div className='col-md-6'>
 											<div className='mb-3'>
 												<label className='form-label'>Assigned To</label>
@@ -253,13 +320,35 @@ const AddComplaintModal = () => {
 												</span>
 											</div>
 										</div>
+									</div> */}
+
+									<div className='col-md-12'>
+										<div className='d-flex align-items-center mb-3'>
+											<div className='avatar avatar-xxl border border-dashed me-3 flex-shrink-0'>
+												<div className='position-relative d-flex align-items-center'>
+													<IconPhoto className='text-dark fs-16' />
+												</div>
+											</div>
+											<div className='d-inline-flex flex-column align-items-start'>
+												<div className='drag-upload-btn btn btn-sm btn-primary position-relative mb-2'>
+													<IconFileBroken className='me-1' size={16} />
+													Upload file
+													<input
+														type='file'
+														className='form-control image-sign'
+														multiple=''
+													/>
+												</div>
+												<span>JPG, GIF or PNG. Max size of 800K</span>
+											</div>
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 
 						{/* Resolution Details */}
-						<div className='accordion-item border-top rounded mb-3'>
+						{/* <div className='accordion-item border-top rounded mb-3'>
 							<div className='accordion-header'>
 								<a
 									href='#'
@@ -310,10 +399,10 @@ const AddComplaintModal = () => {
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> */}
 
 						{/* Access Control */}
-						<div className='accordion-item border-top rounded mb-3'>
+						{/* <div className='accordion-item border-top rounded mb-3'>
 							<div className='accordion-header'>
 								<a
 									href='#'
@@ -382,7 +471,7 @@ const AddComplaintModal = () => {
 									</div>
 								</div>
 							</div>
-						</div>
+						</div> */}
 					</div>
 
 					<div className='d-flex align-items-center justify-content-end'>
@@ -392,7 +481,10 @@ const AddComplaintModal = () => {
 							className='btn btn-light me-2'>
 							Cancel
 						</button>
-						<button type='button' className='btn btn-primary'>
+						<button
+							type='button'
+							className='btn btn-primary'
+							onClick={() => setShowConfirmModal(true)}>
 							Submit Complaint
 						</button>
 					</div>
