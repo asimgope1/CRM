@@ -37,14 +37,19 @@ export default function Login() {
 										onSubmit={handleLogin}
 										className='vh-100 d-flex justify-content-between flex-column p-4 pb-0'>
 										<div className='text-center mb-4 auth-logo'>
-											<div
-												className='img-fluid bg-secondary rounded'
+											<img
+												src='/Logo1.png' 
+												alt='Logo'
+												className='img-fluid bg-white rounded'
 												style={{
-													width: "150px",
-													height: "40px",
+													width: "200px",
+													height: "70px",
+													objectFit: "cover",
 													margin: "0 auto",
-												}}></div>
+												}}
+											/>
 										</div>
+
 										<div>
 											<div className='mb-3'>
 												<h3 className='mb-2'>Sign In</h3>
@@ -160,7 +165,7 @@ export default function Login() {
 								</div>
 							</div>
 						</div>
-						<div className='col-lg-6 account-bg-01 bg-secondary'></div>
+						<div className='col-lg-6 account-bg-01'></div>
 					</div>
 				</div>
 			</div>

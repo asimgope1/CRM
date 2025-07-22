@@ -8,6 +8,10 @@ import Report from "./pages/Report";
 import Forms from "./pages/Forms";
 import CallHistory from "./pages/CallHistory";
 import ChatPage from "./pages/ChatPage";
+import Contacts from "./pages/Contacts";
+import AgentPerformance from "./pages/AgentPerformance";
+import ComplaintManagement from "./pages/ComplaintManagement";
+import CallSupportManagement from "./pages/CallSupportManagement";
 
 
 function App() {
@@ -21,6 +25,13 @@ function App() {
 				<Route path='/Forms' element={<Forms />} />
 				<Route path='/CallHistory' element={<CallHistory />} />
 				<Route path='/ChatPage' element={<ChatPage />} />
+				<Route path='/Contacts' element={<Contacts />} />
+				<Route path='/AgentPerformance' element={<AgentPerformance />} />
+				<Route path='/ComplaintManagement' element={<ComplaintManagement />} />
+				<Route
+					path='/CallSupportManagement'
+					element={<CallSupportManagement />}
+				/>
 			</Routes>
 		</Router>
 	);

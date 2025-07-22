@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import Layout from "../Layout/Layout";
 import Chart from "react-apexcharts";
 import {
+  IconBuilding,
+  IconBusinessplan,
   IconCalendarDue,
+  IconCarouselVertical,
+  IconChalkboardOff,
   IconChevronDown,
   IconColumns3,
   IconDotsVertical,
@@ -64,9 +68,9 @@ function Dashboard() {
                     </p>
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
-                    <span className="avatar avatar-md rounded-circle bg-soft-primary border border-primary">
-                      <i className="ti ti-building fs-16 text-primary"></i>
-                    </span>
+                     <span className="avatar avatar-md rounded-circle bg-soft-primary border border-primary">
+              <IconBuilding size={16} className="text-primary" />
+            </span>
                   </div>
                 </div>
               </div>
@@ -93,8 +97,8 @@ function Dashboard() {
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
                     <span className="avatar avatar-md rounded-circle bg-soft-success border border-success">
-                      <i className="ti ti-carousel-vertical fs-16 text-success"></i>
-                    </span>
+              <IconCarouselVertical size={16} className="text-success" />
+            </span>
                   </div>
                 </div>
               </div>
@@ -120,9 +124,9 @@ function Dashboard() {
                     </p>
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
-                    <span className="avatar avatar-md rounded-circle bg-soft-warning border border-warning">
-                      <i className="ti ti-chalkboard-off fs-16 text-warning"></i>
-                    </span>
+                     <span className="avatar avatar-md rounded-circle bg-soft-warning border border-warning">
+              <IconChalkboardOff size={16} className="text-warning" />
+            </span>
                   </div>
                 </div>
               </div>
@@ -141,7 +145,7 @@ function Dashboard() {
                 <div className="d-flex align-items-start justify-content-between">
                   <div>
                     <p className="fs-14 mb-1">Cancelled Complains</p>
-                    <h2 className="mb-1 fs-16">$89,878,58</h2>
+                    <h2 className="mb-1 fs-16">580</h2>
                     <p className="text-danger mb-0 fs-13">
                       <i className="ti ti-arrow-bar-down me-1"></i>16%
                       <span className="text-body ms-1">from last month</span>
@@ -149,8 +153,8 @@ function Dashboard() {
                   </div>
                   <div className="d-flex align-items-center justify-content-between">
                     <span className="avatar avatar-md rounded-circle bg-soft-danger border border-danger mb-3">
-                      <i className="ti ti-businessplan fs-16 text-primary"></i>
-                    </span>
+              <IconBusinessplan size={16} className="text-primary" />
+            </span>
                   </div>
                 </div>
               </div>
