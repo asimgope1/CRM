@@ -25243,7 +25243,7 @@ ul {
 }
 
 .account-bg-02 {
-    background-image: url(../img/authentication/register-bg.jpg);
+    /* background-image: url(../img/authentication/register-bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -25252,7 +25252,7 @@ ul {
 }
 
 .account-bg-03 {
-    background-image: url(../img/authentication/forgot-bg.jpg);
+    /* background-image: url(../img/authentication/forgot-bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -25261,7 +25261,7 @@ ul {
 }
 
 .account-bg-04 {
-    background-image: url(../img/authentication/reset-bg.jpg);
+    /* background-image: url(../img/authentication/reset-bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -25270,7 +25270,7 @@ ul {
 }
 
 .account-bg-05 {
-    background-image: url(../img/authentication/email-bg.jpg);
+    /* background-image: url(../img/authentication/email-bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -25279,7 +25279,7 @@ ul {
 }
 
 .account-bg-06 {
-    background-image: url(../img/authentication/verification-bg.jpg);
+    /* background-image: url(../img/authentication/verification-bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -25288,7 +25288,7 @@ ul {
 }
 
 .account-bg-07 {
-    background-image: url(../img/authentication/success-bg.jpg);
+    /* background-image: url(../img/authentication/success-bg.jpg); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
