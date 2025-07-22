@@ -138,7 +138,7 @@ const SidenavMenu = ({ pinned, setPinned, isExpanded, setHovered }) => {
 					</Link>
 				</li>
 
-				<li className='nav-item'>
+				{/* <li className='nav-item'>
 					<Link
 						to='/Forms'
 						className='nav-link text-white d-flex align-items-center'>
@@ -147,7 +147,7 @@ const SidenavMenu = ({ pinned, setPinned, isExpanded, setHovered }) => {
 							Forms
 						</span>
 					</Link>
-				</li>
+				</li> */}
 
 				<li className='nav-item'>
 					<Link
