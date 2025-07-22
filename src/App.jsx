@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/Login";
 import Dashboard from "./pages/Dashboard";
-import "../public/Style.css";
+import "./style.css";
 import Complain from "./pages/Complain";
 import Report from "./pages/Report";
 import Forms from "./pages/Forms";
