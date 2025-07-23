@@ -28510,3 +28510,9 @@ th.fc-day-header {
   background-color: #e3f2fd;
   color: #2196f3;
 }
+.nav-link.active {
+  background-color: white !important;
+  color: #212529 !important;
+  font-weight: 600;
+  border-radius: 6px;
+}

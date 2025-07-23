@@ -9,12 +9,10 @@ const Layout = ({ children, title, showHeader = true }) => {
 	const [pinned, setPinned] = useState(false);
 
 	const isExpanded = hovered || pinned;
-
-	const contentMarginLeft = pinned ? 240 : 60;
-	const topbarMarginLeft = isExpanded ? 240 : 60;
+	const sidebarWidth = pinned ? 240 : 60;
 
 	return (
-		<div className="layout-container">
+		<div className='d-flex' style={{ minHeight: "100vh" }}>
 			{/* Sidebar */}
 			<SidenavMenu
 				pinned={pinned}
@@ -23,29 +21,26 @@ const Layout = ({ children, title, showHeader = true }) => {
 				setHovered={setHovered}
 			/>
 
-			{/* Right Side: Topbar + Content */}
-			<div className="layout-main">
+			{/* Main Content Area */}
+			<div
+				className='flex-grow-1'
+				style={{
+					marginLeft: `${sidebarWidth}px`,
+					transition: "margin-left 0.3s ease",
+					width: `calc(100% - ${sidebarWidth}px)`,
+					overflowX: "hidden",
+				}}>
 				{/* Topbar */}
-				<div
-					className="layout-topbar"
-					style={{ marginLeft: topbarMarginLeft }}
-				>
-					<Topbar sidebarWidth={topbarMarginLeft} />
-				</div>
+				<Topbar />
 
 				{/* Page Content */}
-				<div
-					className="layout-content"
-					style={{ marginLeft: contentMarginLeft }}
-				>
-					<div className="page-wrapper">
-						<div className="content pb-0">
-							{showHeader && <PageHeader title={title} />}
-							{children}
-						</div>
-					</div>
-					<Footer />
+				<div className='p-3'>
+					{showHeader && <PageHeader title={title} />}
+					{children}
 				</div>
+
+				{/* Footer */}
+				<Footer />
 			</div>
 		</div>
 	);

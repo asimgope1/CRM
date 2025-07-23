@@ -42,6 +42,8 @@ const dummyComplaints = [
 const ComplaintManagement = () => {
 	const [selectedDate, setSelectedDate] = useState("2025-07-01");
 	const [data, setData] = useState(null);
+	const [selectedDepartment, setSelectedDepartment] = useState("");
+	const [selectedIssueType, setSelectedIssueType] = useState("");
 
 	useEffect(() => {
 		const match = dummyComplaints.find(
@@ -78,6 +80,29 @@ const ComplaintManagement = () => {
 				<div className='d-flex flex-wrap justify-content-between align-items-center my-3'>
 					<h2>Complaint Management KPIs</h2>
 					<div className='d-flex gap-2'>
+						<select
+							className='form-select'
+							value={selectedDepartment}
+							onChange={(e) => setSelectedDepartment(e.target.value)}>
+							<option value=''>All Departments</option>
+							<option value='Support'>Support</option>
+							<option value='Sales'>Sales</option>
+							<option value='Technical'>Technical</option>
+							<option value='Billing'>Billing</option>
+						</select>
+
+						<select
+							className='form-select'
+							value={selectedIssueType}
+							onChange={(e) => setSelectedIssueType(e.target.value)}>
+							<option value=''>All Issue Types</option>
+							<option value='Service Issue'>Service Issue</option>
+							<option value='Product Defect'>Product Defect</option>
+							<option value='Delay in Delivery'>Delay in Delivery</option>
+							<option value='Miscommunication'>Miscommunication</option>
+							<option value='Other'>Other</option>
+						</select>
+
 						<input
 							type='date'
 							value={selectedDate}
@@ -97,22 +122,16 @@ const ComplaintManagement = () => {
 								Icon={IconAlertTriangle}
 							/>
 							<Card
-								title='Avg. Resolution Time'
-								value={`${data.avgResolutionTime} hrs`}
-								color='warning'
-								Icon={IconClock}
-							/>
-							<Card
 								title='First Contact Resolution'
 								value={`${data.firstContactResolution}%`}
 								color='success'
 								Icon={IconHeadset}
 							/>
 							<Card
-								title='Escalated Complaints'
-								value={data.escalated}
-								color='danger'
-								Icon={IconArrowUpCircle}
+								title='Pending Complaints'
+								value={data.pending}
+								color='secondary'
+								Icon={IconClockPause}
 							/>
 							<Card
 								title='Reopened Complaints'
@@ -121,11 +140,19 @@ const ComplaintManagement = () => {
 								Icon={IconRotate}
 							/>
 							<Card
-								title='Pending Complaints'
-								value={data.pending}
-								color='secondary'
-								Icon={IconClockPause}
+								title='Avg. Resolution Time'
+								value={`${data.avgResolutionTime} hrs`}
+								color='warning'
+								Icon={IconClock}
 							/>
+
+							<Card
+								title='Escalated Complaints'
+								value={data.escalated}
+								color='danger'
+								Icon={IconArrowUpCircle}
+							/>
+
 							<Card
 								title='Feedback Score'
 								value={data.feedbackScore.toFixed(2)}

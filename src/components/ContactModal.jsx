@@ -119,7 +119,7 @@ const ContactModal = ({ show, onHide, mode = "add", customer = null }) => {
 				style={{ visibility: show ? "visible" : "hidden" }}>
 				<div className='offcanvas-header border-bottom'>
 					<h5 className='offcanvas-title'>
-						{mode === "add" ? "Add Customer" : "Edit Customer"}
+						{mode === "add" ? "Add Contact" : "Edit Contact"}
 					</h5>
 					<button
 						type='button'

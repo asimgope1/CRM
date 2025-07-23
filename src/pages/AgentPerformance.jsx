@@ -203,7 +203,7 @@ const AgentPerformance = () => {
 						Icon={IconMoodSmile}
 						percentage={7}
 					/>
-					<Card
+					{/* <Card
 						title='Sentiment Analysis (Positive%)'
 						value={`${Math.round(
 							(totalSentiment.positive /
@@ -215,7 +215,7 @@ const AgentPerformance = () => {
 						color='secondary'
 						Icon={IconMoodCheck}
 						percentage={5}
-					/>
+					/> */}
 				</div>
 
 				<div className='row g-4'>

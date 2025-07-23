@@ -29,6 +29,7 @@ import {
 	IconBrandFacebook,
 	IconLoader,
 	IconUser,
+	IconChevronRight,
 } from "@tabler/icons-react";
 import ContactModal from "../components/ContactModal";
 
@@ -185,6 +186,8 @@ function Contacts() {
 
 	return (
 		<Layout title='Contacts' showHeader={false}>
+			
+
 			<ContactModal
 				show={showModal}
 				onHide={handleHide}
@@ -204,8 +207,9 @@ function Contacts() {
 						</h4>
 						<nav aria-label='breadcrumb'>
 							<ol className='breadcrumb mb-0 p-0'>
-								<li className='breadcrumb-item'>
+								<li className='breadcrumb-item d-flex align-items-center'>
 									<Link to='/'>Home</Link>
+									<IconChevronRight className='mx-2' size={14} />
 								</li>
 								<li className='breadcrumb-item active' aria-current='page'>
 									Contacts
@@ -216,7 +220,7 @@ function Contacts() {
 					<div className='gap-2 d-flex align-items-center flex-wrap'>
 						<div className='dropdown'>
 							<button
-								className='dropdown-toggle btn btn-outline-light px-2 shadow'
+								className='btn btn-outline-light shadow px-2'
 								data-bs-toggle='dropdown'>
 								<IconPackageExport className='me-2' size={18} />
 								Export

@@ -6,8 +6,10 @@ import {
 } from "@tabler/icons-react";
 
 const PageHeader = ({ title, showDatePicker = true }) => {
+	// First and last day of the current month
 	const today = new Date();
-	const nextWeek = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000);
+	const firstDay = new Date(today.getFullYear(), today.getMonth(), 1);
+	const lastDay = new Date(today.getFullYear(), today.getMonth() + 1, 0);
 
 	return (
 		<div className='d-flex align-items-center justify-content-between gap-2 mb-4 flex-wrap'>
@@ -17,13 +19,13 @@ const PageHeader = ({ title, showDatePicker = true }) => {
 
 			{showDatePicker && (
 				<div className='gap-2 d-flex align-items-center flex-wrap'>
-					{/* Date Range Picker (styled placeholder) */}
+					{/* Date Range Picker */}
 					<div
 						className='daterangepick form-control w-auto d-flex align-items-center shadow-sm'
 						style={{ backgroundColor: "#f5f5f5", border: "1px solid #ddd" }}>
 						<IconCalendarDue size={16} className='text-dark me-2' />
 						<span className='reportrange-picker-field text-dark'>
-							{today.toLocaleDateString()} - {nextWeek.toLocaleDateString()}
+							{firstDay.toLocaleDateString()} - {lastDay.toLocaleDateString()}
 						</span>
 					</div>
 
