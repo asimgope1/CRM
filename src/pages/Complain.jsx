@@ -23,12 +23,14 @@ import EditComplainModal from "../components/EditCompLainModal";
 import DeleteModal from "../components/DeleteModal";
 import Layout from "../Layout/Layout";
 import StatusCheckModal from "../components/StatusCheckModal";
+import ViewModal from "../components/ViewModal";
 
 function Complain() {
 	const [showAddModal, setShowAddModal] = useState(false);
 	const [showEditModal, setShowEditModal] = useState(false);
 	const [showDeleteModal, setShowDeleteModal] = useState(false);
 	 const [showModal, setShowModal] = useState(false);
+	 const [showViewModal, setShowViewModal] = useState(false);
 
 	// Sample data
 	const initialComplaints = [
@@ -218,6 +220,48 @@ function Complain() {
 			year: "numeric",
 		});
 	};
+	const dummyComplaint = {
+  id: "COMP-2023-00142",
+  ticketNo: "TKT-789456",
+  date: "2023-05-15T14:30:00",
+  phone: "+1 (555) 123-4567",
+  name: "John Smith",
+  city: "New York",
+  state: "NY",
+  address: "123 Main Street, Apt 4B, 10001",
+  department: "Public Works",
+  type: "Noise Complaint",
+  notes: "Construction noise continues past permitted hours (after 6 PM). Affecting sleep and quality of life. Request immediate action.",
+  history: [
+    {
+      date: "2023-05-15",
+      followedBy: "Officer Johnson",
+      phase: "Logged",
+      remarks: "Complaint received and logged into system"
+    },
+    {
+      date: "2023-05-16",
+      followedBy: "Inspector Williams",
+      phase: "Assigned",
+      remarks: "Case assigned to field team for verification"
+    },
+    {
+      date: "2023-05-18",
+      followedBy: "Supervisor Lee",
+      phase: "In Progress",
+      remarks: "Site visit conducted. Violation notice issued to construction company"
+    },
+    {
+      date: "2023-05-20",
+      followedBy: "Officer Johnson",
+      phase: "Resolved",
+      remarks: "Follow-up confirmed compliance. No further complaints received."
+    }
+  ]
+};
+
+// Usage in your component:
+<ViewModal complaint={dummyComplaint} onClose={() => console.log('Modal closed')} />
 
 	return (
 		<Layout title='Complaints' showHeader={false}>
@@ -239,6 +283,11 @@ function Complain() {
 						onClose={() => setShowModal(false)}
 					/>
 				)}
+{	showViewModal &&			<ViewModal
+  complaint={dummyComplaint}
+  onClose={() => setShowViewModal(false)}
+  show={showViewModal}
+/>}
 
 				<DeleteModal
 					show={showDeleteModal}
@@ -629,7 +678,7 @@ function Complain() {
 														className='btn btn-icon btn-outline-light shadow'
 														onClick={() => 
 															// setShowViewModal(true)
-															{}
+															setShowViewModal(true)
 
 														}
 														title='View'>
