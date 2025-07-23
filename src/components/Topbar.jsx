@@ -157,9 +157,8 @@ const Topbar = () => {
 							data-bs-toggle='dropdown'>
 							<div className='profile-avatar'>
 								<img
-									src='/public/Logo1.png'
+									src='/Logo1.png'
 									alt='User Avatar'
-									// className='img-fluid rounded-circle'
 									style={{ width: "42px", height: "42px", objectFit: "cover" }}
 								/>
 							</div>
