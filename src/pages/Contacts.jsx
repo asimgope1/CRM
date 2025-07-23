@@ -30,6 +30,8 @@ import {
 	IconLoader,
 	IconUser,
 	IconChevronRight,
+	IconGenderMale,
+	IconGenderFemale,
 } from "@tabler/icons-react";
 import ContactModal from "../components/ContactModal";
 
@@ -183,11 +185,17 @@ function Contacts() {
 		setSelectedTags([]);
 		setSelectedStatus([]);
 	};
-
+const getGenderIcon = (name) => {
+	// Simple heuristic - in a real app you'd want actual gender data
+	const femaleNames = ["Jane", "Alice", "Diana"];
+	return femaleNames.some((fn) => name.includes(fn)) ? (
+		<IconGenderFemale className='text-pink' size={16} />
+	) : (
+		<IconGenderMale className='text-blue' size={16} />
+	);
+};
 	return (
 		<Layout title='Contacts' showHeader={false}>
-			
-
 			<ContactModal
 				show={showModal}
 				onHide={handleHide}
@@ -508,10 +516,15 @@ function Contacts() {
 																className='rounded-circle'
 															/>
 														) : (
-															<div
-																className='bg-light rounded-circle d-flex align-items-center justify-content-center'
-																style={{ width: "40px", height: "40px" }}>
-																<IconUser size={20} />
+															<div className='position-relative'>
+																<div
+																	className='bg-light rounded-circle d-flex align-items-center justify-content-center'
+																	style={{ width: "40px", height: "40px" }}>
+																	<IconUser size={20} />
+																</div>
+																<span className='position-absolute bottom-0 end-0'>
+																	{getGenderIcon(contact.name)}
+																</span>
 															</div>
 														)}
 													</Link>
@@ -678,21 +691,26 @@ function Contacts() {
 														</td>
 														<td>
 															<div className='d-flex align-items-center'>
-																{contact.avatar ? (
-																	<img
-																		// src={`assets/img/profiles/${contact.avatar}`}
-																		alt={contact.name}
-																		className='rounded-circle me-2'
-																		width='32'
-																		height='32'
-																	/>
-																) : (
-																	<div
-																		className='bg-light rounded-circle me-2 d-flex align-items-center justify-content-center'
-																		style={{ width: "32px", height: "32px" }}>
-																		<IconUser size={16} />
-																	</div>
-																)}
+																<div className='position-relative me-2'>
+																	{contact.avatar ? (
+																		<img
+																			// src={`assets/img/profiles/${contact.avatar}`}
+																			alt={contact.name}
+																			className='rounded-circle'
+																			width='32'
+																			height='32'
+																		/>
+																	) : (
+																		<div
+																			className='bg-light rounded-circle d-flex align-items-center justify-content-center'
+																			style={{ width: "32px", height: "32px" }}>
+																			<IconUser size={16} />
+																		</div>
+																	)}
+																	<span className='position-absolute bottom-0 end-0 bg-white rounded-circle p-1'>
+																		{getGenderIcon(contact.name)}
+																	</span>
+																</div>
 																<span>{contact.name}</span>
 															</div>
 														</td>
