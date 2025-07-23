@@ -452,7 +452,7 @@ const StatusCheckModal = () => {
 									<span className='avatar avatar-md rounded me-1'>
 										<IconMapPinCog size={18} />
 									</span>
-									Additional Details
+									History 
 								</a>
 							</div>
 							<div
