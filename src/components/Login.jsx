@@ -38,7 +38,7 @@ export default function Login() {
 										className='vh-100 d-flex justify-content-between flex-column p-4 pb-0'>
 										<div className='text-center mb-4 auth-logo'>
 											<img
-												src='/Logo1.png' 
+												src='/Logo1.png'
 												alt='Logo'
 												className='img-fluid bg-white rounded'
 												style={{
@@ -108,11 +108,31 @@ export default function Login() {
 													</a>
 												</div>
 											</div>
-											<div className='mb-3'>
-												<button type='submit' className='btn btn-primary w-100'>
-													Sign In
-												</button>
+											<div className='row'>
+												{/* Sign In Button */}
+												<div className='col-6'>
+													<div className='mb-3'>
+														<button
+															type='submit'
+															className='btn btn-primary w-100'>
+															Sign In
+														</button>
+													</div>
+												</div>
+
+												{/* Add Complaint Button */}
+												<div className='col-6'>
+													<div className='mb-3'>
+														<button
+															type='button'
+															className='btn btn-outline-dark w-100'
+															onClick={() => navigate("/AddComplaintPage")}>
+															Add Complaint
+														</button>
+													</div>
+												</div>
 											</div>
+
 											<div className='mb-3'>
 												<p className='mb-0'>
 													New on our platform?
@@ -146,15 +166,9 @@ export default function Login() {
 														Google
 													</button>
 												</div>
-												<div className='text-center flex-fill'>
-													<button
-														type='button'
-														className='p-2 btn btn-dark d-flex align-items-center justify-content-center w-100'>
-														<IconBrandApple size={20} className='me-1' />
-														Apple
-													</button>
-												</div>
 											</div>
+
+											{/* add complaint button for navigation to page with add complaint form */}
 										</div>
 										<div className='text-center pb-4'>
 											<p className='text-dark mb-0'>

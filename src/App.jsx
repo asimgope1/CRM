@@ -12,6 +12,7 @@ import Contacts from "./pages/Contacts";
 import AgentPerformance from "./pages/AgentPerformance";
 import ComplaintManagement from "./pages/ComplaintManagement";
 import CallSupportManagement from "./pages/CallSupportManagement";
+import AddComplaintPage from "./components/AddComplaintPage";
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
 					path='/CallSupportManagement'
 					element={<CallSupportManagement />}
 				/>
+				<Route path='/AddComplaintPage' element={<AddComplaintPage />} />
 			</Routes>
 		</Router>
 	);

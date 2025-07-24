@@ -38,16 +38,17 @@ const ViewModal = ({ complaint, onClose }) => {
 					<div className='row'>
 						<div className='col-md-6'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconHash className='me-2' size={18} />
 									Complaint ID
 								</label>
+
 								<p className='form-control-plaintext'>{complaint.id}</p>
 							</div>
 						</div>
 						<div className='col-md-6'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconHash className='me-2' size={18} />
 									Ticket Number
 								</label>
@@ -56,7 +57,7 @@ const ViewModal = ({ complaint, onClose }) => {
 						</div>
 						<div className='col-md-6'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconCalendarTime className='me-2' size={18} />
 									Date & Time
 								</label>
@@ -67,7 +68,7 @@ const ViewModal = ({ complaint, onClose }) => {
 						</div>
 						<div className='col-md-6'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconPhone className='me-2' size={18} />
 									Phone Number
 								</label>
@@ -76,7 +77,7 @@ const ViewModal = ({ complaint, onClose }) => {
 						</div>
 						<div className='col-md-6'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconUser className='me-2' size={18} />
 									Customer Name
 								</label>
@@ -85,7 +86,7 @@ const ViewModal = ({ complaint, onClose }) => {
 						</div>
 						<div className='col-md-6'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconMapPin className='me-2' size={18} />
 									Location
 								</label>
@@ -96,7 +97,7 @@ const ViewModal = ({ complaint, onClose }) => {
 						</div>
 						<div className='col-12'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconMapPin className='me-2' size={18} />
 									Address
 								</label>
@@ -105,7 +106,7 @@ const ViewModal = ({ complaint, onClose }) => {
 						</div>
 						<div className='col-md-6'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconBuilding className='me-2' size={18} />
 									Department
 								</label>
@@ -114,7 +115,7 @@ const ViewModal = ({ complaint, onClose }) => {
 						</div>
 						<div className='col-md-6'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconTag className='me-2' size={18} />
 									Complaint Type
 								</label>
@@ -123,7 +124,7 @@ const ViewModal = ({ complaint, onClose }) => {
 						</div>
 						<div className='col-12'>
 							<div className='mb-3'>
-								<label className='form-label d-flex align-items-center text-muted'>
+								<label className='form-label d-flex align-items-center text-dark'>
 									<IconFileDescription className='me-2' size={18} />
 									Notes
 								</label>
@@ -162,7 +163,7 @@ const ViewModal = ({ complaint, onClose }) => {
 										))
 									) : (
 										<tr>
-											<td colSpan='4' className='text-center text-muted'>
+											<td colSpan='4' className='text-center text-dark'>
 												No history available
 											</td>
 										</tr>

@@ -147,7 +147,7 @@ const handleSubmit = () => {
 										</div>
 
 										{/* State */}
-										<div className='col-md-3'>
+										<div className='col-md-6'>
 											<div className='mb-3'>
 												<label className='form-label'>State</label>
 												<input
@@ -159,7 +159,7 @@ const handleSubmit = () => {
 										</div>
 
 										{/* City */}
-										<div className='col-md-3'>
+										<div className='col-md-6'>
 											<div className='mb-3'>
 												<label className='form-label'>City</label>
 												<input

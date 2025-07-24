@@ -8,6 +8,8 @@ const dummyComplaints = [
 	{
 		date: "2025-07-01",
 		total: 120,
+		solved: 100,
+		cancelled: 15,
 		resolved: 90,
 		escalated: 10,
 		reopened: 5,
@@ -24,6 +26,8 @@ const dummyComplaints = [
 	{
 		date: "2025-07-15",
 		total: 150,
+		solved: 130,
+		cancelled: 10,
 		resolved: 120,
 		escalated: 12,
 		reopened: 7,
@@ -122,16 +126,22 @@ const ComplaintManagement = () => {
 								Icon={IconAlertTriangle}
 							/>
 							<Card
-								title='First Contact Resolution'
-								value={`${data.firstContactResolution}%`}
+								title='Solved Complaints '
+								value={data.solved}
 								color='success'
-								Icon={IconHeadset}
+								Icon={IconAlertTriangle}
 							/>
 							<Card
 								title='Pending Complaints'
 								value={data.pending}
 								color='secondary'
 								Icon={IconClockPause}
+							/>
+							<Card
+								title='Cancelled Complaints'
+								value={data.cancelled}
+								color='primary'
+								Icon={IconAlertTriangle}
 							/>
 							<Card
 								title='Reopened Complaints'
@@ -144,6 +154,12 @@ const ComplaintManagement = () => {
 								value={`${data.avgResolutionTime} hrs`}
 								color='warning'
 								Icon={IconClock}
+							/>
+							<Card
+								title='First Contact Resolution'
+								value={`${data.firstContactResolution}%`}
+								color='success'
+								Icon={IconHeadset}
 							/>
 
 							<Card
