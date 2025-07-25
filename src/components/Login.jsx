@@ -132,7 +132,7 @@ export default function Login() {
 													</div>
 												</div>
 											</div>
-
+ 
 											<div className='mb-3'>
 												<p className='mb-0'>
 													New on our platform?

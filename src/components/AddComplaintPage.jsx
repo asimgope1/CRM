@@ -22,10 +22,31 @@ const AddComplaintPage = () => {
 	};
 
 	return (
-		<div className='d-flex align-items-center justify-content-center min-vh-100 bg-light p-3'>
-			<div className='card shadow-lg w-100' style={{ maxWidth: "960px" }}>
+		<div
+			className='d-flex align-items-center justify-content-center min-vh-100 p-3'
+			style={{
+				backgroundImage:
+					"url('https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
+				backgroundSize: "cover",
+				backgroundPosition: "center",
+				backgroundAttachment: "fixed",
+				backgroundColor: "rgba(0,0,0,0.5)",
+				backgroundBlendMode: "overlay",
+			}}>
+			<div
+				className='card shadow-lg w-100'
+				style={{
+					maxWidth: "960px",
+					backgroundColor: "rgba(255,255,255,0.95)",
+				}}>
 				{/* Header */}
-				<div className='card-header bg-white border-bottom d-flex align-items-center justify-content-between'>
+				<div
+					className='card-header border-bottom d-flex align-items-center justify-content-between'
+					style={{
+						backgroundColor: "#e9ecef",
+						minHeight: "70px",
+						padding: "1rem 1.25rem",
+					}}>
 					<h5 className='mb-0 fw-bold text-black d-flex align-items-center'>
 						<IconUserPlus className='me-2' size={20} />
 						Add New Complaint
