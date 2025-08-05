@@ -3,16 +3,51 @@ import {
 	IconEyeOff,
 	IconBrandFacebook,
 	IconBrandGoogle,
-	IconBrandApple,
 } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Login() {
 	const navigate = useNavigate();
+	const [email, setEmail] = useState("");
+	const [password, setPassword] = useState("");
 
-	const handleLogin = (e) => {
+	const handleLogin = async (e) => {
 		e.preventDefault();
+		console.log("🔐 Starting login request...");
 		navigate("/dashboard");
+
+		try {
+			const response = await fetch(
+				"https://192.168.0.106:7054/api/Auth/login",
+				{
+					method: "POST",
+					headers: {
+						Accept: "*/*",
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ username: email, password }),
+				},
+			);
+
+			if (!response.ok) {
+				const errorText = await response.text();
+				throw new Error(errorText || "Login failed");
+			}
+
+			const result = await response.json();
+			console.log("✅ Login response:", result);
+
+			if (result.token) {
+				localStorage.setItem("token", result.token);
+				navigate("/dashboard");
+			} else {
+				throw new Error("No token received");
+			}
+		} catch (error) {
+			console.error("❌ Login error:", error.message);
+			alert("Login failed: " + error.message);
+		}
 	};
 
 	const handleSignup = (e) => {
@@ -26,162 +61,277 @@ export default function Login() {
 	};
 
 	return (
-		<div className='account-page bg-white'>
-			<div className='main-wrapper'>
-				<div className='overflow-hidden p-3 acc-vh'>
-					<div className='row vh-100 w-100 g-0'>
-						<div className='col-lg-6 vh-100 overflow-y-auto overflow-x-hidden'>
-							<div className='row'>
-								<div className='col-md-10 mx-auto'>
-									<form
-										onSubmit={handleLogin}
-										className='vh-100 d-flex justify-content-between flex-column p-4 pb-0'>
-										<div className='text-center mb-4 auth-logo'>
-											<img
-												src='/Logo1.png'
-												alt='Logo'
-												className='img-fluid bg-white rounded'
-												style={{
-													width: "200px",
-													height: "70px",
-													objectFit: "cover",
-													margin: "0 auto",
-												}}
-											/>
-										</div>
+		<div
+			className='container-fluid p-0'
+			style={{
+				height: "100vh",
+				display: "flex",
+				flexDirection: "column",
+				overflow: "hidden",
+				backgroundColor: "#FFF1EA",
+				position: "relative",
+			}}>
+			{/* Blurred Background Elements */}
+			<div
+				style={{
+					position: "absolute",
+					top: "20%",
+					left: "10%",
+					width: "200px",
+					height: "200px",
+					borderRadius: "50%",
+					background: "rgba(244, 142, 110, 0.2)",
+					filter: "blur(40px)",
+					zIndex: 0,
+				}}></div>
+			<div
+				style={{
+					position: "absolute",
+					bottom: "15%",
+					right: "10%",
+					width: "250px",
+					height: "250px",
+					borderRadius: "50%",
+					background: "rgba(244, 142, 110, 0.15)",
+					filter: "blur(50px)",
+					zIndex: 0,
+				}}></div>
 
-										<div>
-											<div className='mb-3'>
-												<h3 className='mb-2'>Sign In</h3>
-												<p className='mb-0'>
-													Access the CRMS panel using your email and passcode.
-												</p>
-											</div>
-											<div className='mb-3'>
-												<label className='form-label'>Email Address</label>
-												<div className='input-group input-group-flat'>
-													<input
-														type='email'
-														className='form-control'
-														placeholder='Enter your email'
-														required
-													/>
-													<span className='input-group-text'>
-														<IconMail size={18} />
-													</span>
-												</div>
-											</div>
-											<div className='mb-3'>
-												<label className='form-label'>Password</label>
-												<div className='input-group input-group-flat pass-group'>
-													<input
-														type='password'
-														className='form-control pass-input'
-														placeholder='Enter your password'
-														required
-													/>
-													<span className='input-group-text toggle-password'>
-														<IconEyeOff size={18} />
-													</span>
-												</div>
-											</div>
-											<div className='d-flex align-items-center justify-content-between mb-3'>
-												<div className='form-check form-check-md d-flex align-items-center'>
-													<input
-														className='form-check-input mt-0'
-														type='checkbox'
-														id='checkbox-md'
-														defaultChecked
-													/>
-													<label
-														className='form-check-label text-dark ms-1'
-														htmlFor='checkbox-md'>
-														Remember Me
-													</label>
-												</div>
-												<div className='text-end'>
-													<a
-														href='#'
-														className='link-danger fw-medium link-hover'
-														onClick={handleForgotPassword}>
-														Forgot Password?
-													</a>
-												</div>
-											</div>
-											<div className='row'>
-												{/* Sign In Button */}
-												<div className='col-6'>
-													<div className='mb-3'>
-														<button
-															type='submit'
-															className='btn btn-primary w-100'>
-															Sign In
-														</button>
-													</div>
-												</div>
+			{/* Top Wave */}
+			<div
+				style={{
+					height: "100px",
+					flexShrink: 0,
+					position: "relative",
+					zIndex: 1,
+					backgroundColor: "#FFF1EA",
+				}}>
+				<svg
+					width='100%'
+					height='100%'
+					viewBox='0 0 1440 100'
+					preserveAspectRatio='none'
+					style={{ display: "block" }}>
+					<path
+						fill='#F48E6E'
+						d='M0,50L48,43.3C96,37,192,23,288,25C384,27,480,47,576,56.7C672,67,768,67,864,58.3C960,50,1056,33,1152,28.3C1248,23,1344,30,1392,33.3L1440,37L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'></path>
+				</svg>
+			</div>
 
-												{/* Add Complaint Button */}
-												<div className='col-6'>
-													<div className='mb-3'>
-														<button
-															type='button'
-															className='btn btn-outline-dark w-100'
-															onClick={() => navigate("/AddComplaintPage")}>
-															Add Complaint
-														</button>
-													</div>
-												</div>
-											</div>
- 
-											<div className='mb-3'>
-												<p className='mb-0'>
-													New on our platform?
-													<a
-														href='#'
-														className='link-indigo fw-bold link-hover ms-1'
-														onClick={handleSignup}>
-														Create an account
-													</a>
-												</p>
-											</div>
-											<div className='or-login text-center position-relative mb-3'>
-												<h6 className='fs-14 mb-0 position-relative text-body'>
-													OR
-												</h6>
-											</div>
-											<div className='d-flex align-items-center justify-content-center flex-wrap gap-2 mb-3'>
-												<div className='text-center flex-fill'>
-													<button
-														type='button'
-														className='p-2 btn btn-info d-flex align-items-center justify-content-center w-100'>
-														<IconBrandFacebook size={20} className='me-1' />
-														Facebook
-													</button>
-												</div>
-												<div className='text-center flex-fill'>
-													<button
-														type='button'
-														className='p-2 btn btn-outline-light d-flex align-items-center justify-content-center w-100 text-dark'>
-														<IconBrandGoogle size={20} className='me-1' />
-														Google
-													</button>
-												</div>
-											</div>
+			{/* Main Content */}
+			<div
+				className='flex-grow-1 d-flex align-items-center justify-content-center py-3'
+				style={{
+					overflowY: "hidden",
+					position: "relative",
+					zIndex: 1,
+				}}>
+				<div className='col-12 col-sm-8 col-md-6 col-lg-4'>
+					<div
+						className='bg-white rounded shadow p-4'
+						style={{
+							fontSize: "0.875rem",
+							backdropFilter: "blur(8px)",
+							backgroundColor: "rgba(255, 255, 255, 0.85)",
+							border: "1px solid rgba(244, 142, 110, 0.2)",
+							boxShadow: "0 8px 32px rgba(244, 142, 110, 0.1)",
+						}}>
+						<form
+							onSubmit={handleLogin}
+							className='d-flex flex-column justify-content-between'>
+							{/* Logo */}
+							<div className='text-center mb-3'>
+								<img
+									src='/Logo1.png'
+									alt='Logo'
+									className='img-fluid bg-white rounded'
+									style={{
+										width: "120px",
+										height: "80px",
+										objectFit: "cover",
+										margin: "0 auto",
+										border: "2px solid #F48E6E",
+									}}
+								/>
+							</div>
 
-											{/* add complaint button for navigation to page with add complaint form */}
-										</div>
-										<div className='text-center pb-4'>
-											<p className='text-dark mb-0'>
-												Copyright &copy; {new Date().getFullYear()} - CRMS
-											</p>
-										</div>
-									</form>
+							{/* Heading */}
+							<div className='mb-2 text-center'>
+								<h5 className='mb-1' style={{ color: "#F48E6E" }}>
+									Sign In
+								</h5>
+								<p className='mb-0 small text-muted'>
+									Access the CRMS panel using your credentials.
+								</p>
+							</div>
+
+							{/* Email */}
+							<div className='mb-2'>
+								<label className='form-label small'>Email Address</label>
+								<div className='input-group input-group-sm'>
+									<input
+										// type='email'
+										className='form-control'
+										placeholder='Email'
+										required
+										value={email}
+										onChange={(e) => setEmail(e.target.value)}
+										style={{ borderColor: "#F48E6E" }}
+									/>
+									<span
+										className='input-group-text'
+										style={{
+											backgroundColor: "#FFF1EA",
+											borderColor: "#F48E6E",
+										}}>
+										<IconMail size={16} color='#F48E6E' />
+									</span>
 								</div>
 							</div>
-						</div>
-						<div className='col-lg-6 account-bg-01'></div>
+
+							{/* Password */}
+							<div className='mb-2'>
+								<label className='form-label small'>Password</label>
+								<div className='input-group input-group-sm'>
+									<input
+										// type='password'
+										className='form-control'
+										placeholder='Password'
+										required
+										value={password}
+										onChange={(e) => setPassword(e.target.value)}
+										style={{ borderColor: "#F48E6E" }}
+									/>
+									<span
+										className='input-group-text'
+										style={{
+											backgroundColor: "#FFF1EA",
+											borderColor: "#F48E6E",
+										}}>
+										<IconEyeOff size={16} color='#F48E6E' />
+									</span>
+								</div>
+							</div>
+
+							{/* Remember + Forgot */}
+							<div className='d-flex justify-content-between align-items-center mb-2'>
+								<div className='form-check form-check-sm d-flex align-items-center'>
+									<input
+										className='form-check-input'
+										type='checkbox'
+										id='remember'
+										defaultChecked
+										style={{ borderColor: "#F48E6E" }}
+									/>
+									<label
+										className='form-check-label small ms-1'
+										htmlFor='remember'>
+										Remember Me
+									</label>
+								</div>
+								<button
+									className='btn btn-link p-0 small'
+									onClick={handleForgotPassword}
+									style={{ color: "#F48E6E" }}>
+									Forgot?
+								</button>
+							</div>
+
+							{/* Buttons */}
+							<div className='row justify-content-center mb-2'>
+								<div className='col-8'>
+									<div className='d-flex gap-2'>
+										<button
+											type='submit'
+											className='btn btn-sm flex-grow-1 d-flex align-items-center justify-content-center'
+											style={{
+												backgroundColor: "#F48E6E",
+												color: "white",
+												border: "none",
+											}}>
+											SignIn
+										</button>
+										<button
+											type='button'
+											className='btn btn-outline-secondary btn-sm flex-grow-1'
+											onClick={() => navigate("/AddComplaintPage")}
+											style={{ borderColor: "#F48E6E", color: "#F48E6E" }}>
+											Add Complaint
+										</button>
+									</div>
+								</div>
+							</div>
+
+							{/* Signup */}
+							<p className='text-center small mb-2'>
+								New here?{" "}
+								<button
+									className='btn btn-link p-0 small'
+									onClick={handleSignup}
+									style={{ color: "#F48E6E" }}>
+									Create account
+								</button>
+							</p>
+
+							{/* OR Divider */}
+							<div className='text-center position-relative mb-2'>
+								<hr style={{ borderColor: "rgba(244, 142, 110, 0.3)" }} />
+								<span
+									className='position-absolute top-50 start-50 translate-middle bg-white px-2 small'
+									style={{ color: "#F48E6E" }}>
+									OR
+								</span>
+							</div>
+
+							{/* Social Login */}
+							<div className='d-flex justify-content-center gap-2 mb-2'>
+								<button
+									type='button'
+									className='btn btn-sm d-flex align-items-center justify-content-center'
+									style={{
+										backgroundColor: "#3b5998",
+										color: "white",
+									}}>
+									<IconBrandFacebook size={16} className='me-1' />
+									Facebook
+								</button>
+								<button
+									type='button'
+									className='btn btn-outline-secondary btn-sm d-flex align-items-center justify-content-center'
+									style={{ borderColor: "#F48E6E", color: "#F48E6E" }}>
+									<IconBrandGoogle size={16} className='me-1' />
+									Google
+								</button>
+							</div>
+
+							{/* Footer */}
+							<p className='text-center small text-muted pt-2 mb-0'>
+								&copy; {new Date().getFullYear()} - CRMS
+							</p>
+						</form>
 					</div>
 				</div>
+			</div>
+
+			{/* Bottom Wave */}
+			<div
+				style={{
+					height: "100px",
+					flexShrink: 0,
+					position: "relative",
+					zIndex: 1,
+					backgroundColor: "#FFF1EA",
+				}}>
+				<svg
+					width='100%'
+					height='100%'
+					viewBox='0 0 1440 100'
+					preserveAspectRatio='none'
+					style={{ display: "block" }}>
+					<path
+						fill='#F48E6E'
+						d='M0,50L48,56.7C96,63,192,77,288,75C384,73,480,53,576,43.3C672,33,768,33,864,41.7C960,50,1056,67,1152,71.7C1248,77,1344,70,1392,66.7L1440,63L1440,100L1392,100C1344,100,1248,100,1152,100C1056,100,960,100,864,100C768,100,672,100,576,100C480,100,384,100,288,100C192,100,96,100,48,100L0,100Z'></path>
+				</svg>
 			</div>
 		</div>
 	);

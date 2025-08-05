@@ -13,6 +13,14 @@ import AgentPerformance from "./pages/AgentPerformance";
 import ComplaintManagement from "./pages/ComplaintManagement";
 import CallSupportManagement from "./pages/CallSupportManagement";
 import AddComplaintPage from "./components/AddComplaintPage";
+import CreateUser from "./pages/CreateUser";
+import CreateRole from "./pages/CreateRole";
+import RolePermission from "./pages/RolePermission";
+import UserRoleAssignment from "./pages/UserRoleAssignment";
+import Department from "./pages/Department";
+import AssignDepartment from "./pages/AssignDepartment";
+import ComplaintType from "./pages/ComplaintType";
+import ComplaintPhases from "./pages/ComplaintPhases";
 
 
 function App() {
@@ -34,6 +42,14 @@ function App() {
 					element={<CallSupportManagement />}
 				/>
 				<Route path='/AddComplaintPage' element={<AddComplaintPage />} />
+				<Route path='/CreateUser' element={<CreateUser />} />
+				<Route path='/CreateRole' element={<CreateRole />} />
+				<Route path='/RolePermission' element={<RolePermission />} />
+				<Route path='/UserRoleAssignment' element={<UserRoleAssignment />} />
+				<Route path='/Department' element={<Department />} />
+				<Route path='/AssignDepartment' element={<AssignDepartment />} />
+				<Route path='/ComplaintType' element={<ComplaintType />} />
+				<Route path='/ComplaintPhases' element={<ComplaintPhases />} />
 			</Routes>
 		</Router>
 	);
